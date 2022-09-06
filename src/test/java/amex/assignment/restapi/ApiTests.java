@@ -32,7 +32,7 @@ class ApiTests {
         then().
                 statusCode(200).
                 contentType("application/json").
-                body("orderTotal",equalTo(3.0F));
+                body("orderTotal",equalTo(1.8F));
 
         String jsonBodyApple = generateStringFromResource("src/main/resources/json/TC2.json");
 
@@ -45,7 +45,7 @@ class ApiTests {
                 then().
                 statusCode(200).
                 contentType("application/json").
-                body("orderTotal",equalTo(1.0F));
+                body("orderTotal",equalTo(0.75F));
     }
 
     public String generateStringFromResource(String path) throws IOException {

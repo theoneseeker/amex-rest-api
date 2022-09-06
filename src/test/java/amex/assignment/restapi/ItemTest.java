@@ -1,5 +1,7 @@
-package amex.assignment.restapi.model;
+package amex.assignment.restapi;
 
+import amex.assignment.restapi.model.Apple;
+import amex.assignment.restapi.model.Orange;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,28 +29,19 @@ class ItemTest {
 
         apple.setQuantity(5);
         actual = apple.calcCost();
-        expected = 3f;
+        expected = 1.8f;
         assertEquals(expected, actual);
 
         apple.setQuantity(-5);
         actual = apple.calcCost();
-        expected = -3f;
+        expected = 0f;
         assertEquals(expected, actual);
 
-        apple.setQuantity(-5);
+        apple.setQuantity(1000);
         actual = apple.calcCost();
-        expected = -3f;
-        assertEquals(expected, actual);
-
-        apple.setQuantity(Integer.MAX_VALUE);
-        actual = apple.calcCost();
-        expected = 0.6f*Integer.MAX_VALUE;
+        expected = 300.0f;
         assertEquals(expected,actual);
 
-        apple.setQuantity(Integer.MIN_VALUE);
-        actual = apple.calcCost();
-        expected = 0.6f*Integer.MIN_VALUE;
-        assertEquals(expected,actual);
     }
 
     @Test
@@ -59,22 +52,18 @@ class ItemTest {
 
         orange.setQuantity(5);
         actual = orange.calcCost();
-        expected = 1.25f;
+        expected = 1.0f;
         assertEquals(actual,expected);
 
         orange.setQuantity(-5);
         actual = orange.calcCost();
-        expected = -1.25f;
+        expected = 0f;
         assertEquals(actual,expected);
 
-        orange.setQuantity(Integer.MIN_VALUE);
+        orange.setQuantity(1000);
         actual = orange.calcCost();
-        expected = 0.25f*Integer.MIN_VALUE;
+        expected = 166.75f;
         assertEquals(actual,expected);
 
-        orange.setQuantity(Integer.MAX_VALUE);
-        actual = orange.calcCost();
-        expected = 0.25f*Integer.MAX_VALUE;
-        assertEquals(actual,expected);
     }
 }
