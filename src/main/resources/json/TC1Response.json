@@ -1,0 +1,10 @@
+{
+  "orderTotal": 3.0,
+  "itemArr": [
+    {
+      "className": "amex.assignment.restapi.model.Apple",
+      "name": "apple",
+      "quantity": 5
+    }
+  ]
+}

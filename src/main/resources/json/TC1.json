@@ -1,0 +1,8 @@
+{"id":1,
+  "itemArr":[{
+    "className": "amex.assignment.restapi.model.Apple",
+    "name":"hello",
+    "quantity":5
+  }
+  ]
+}
