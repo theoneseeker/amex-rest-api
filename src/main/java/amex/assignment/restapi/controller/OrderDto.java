@@ -6,6 +6,11 @@ public class OrderDto {
     private int id;
     private Item[] itemArr;
 
+    public OrderDto(int id, Item[] itemArr) {
+        this.id = id;
+        this.itemArr = itemArr;
+    }
+
     public int getId() {
         return id;
     }

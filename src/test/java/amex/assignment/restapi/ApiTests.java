@@ -48,6 +48,38 @@ class ApiTests {
                 body("orderTotal",equalTo(0.75F));
     }
 
+    @Test
+    void getOrders() {
+        given().
+                port(port).
+        when().
+                get("/orders").
+        then().
+                statusCode(200).
+                body("orderList[0].itemList[0].quantity", equalTo(5)).
+                body("orderList[1].itemList[1].quantity",equalTo(3));
+    }
+
+    @Test
+    void getOrder() {
+        given().
+                port(port).
+        when().
+                get("/orders/0/order").
+        then().
+                statusCode(200).
+                body("itemArr[0].quantity", equalTo(5));
+
+        given().
+                port(port).
+        when().
+                get("/orders/1/order").
+        then().
+                statusCode(200).
+        body("itemArr[1].quantity", equalTo(3));
+
+    }
+
     public String generateStringFromResource(String path) throws IOException {
         return new String(Files.readAllBytes(Paths.get(path)));
     }

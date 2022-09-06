@@ -2,6 +2,7 @@ package amex.assignment.restapi.controller;
 
 
 import amex.assignment.restapi.model.Order;
+import amex.assignment.restapi.model.OrderList;
 import amex.assignment.restapi.model.OrderSummary;
 import amex.assignment.restapi.service.IOrderService;
 import amex.assignment.restapi.util.mapping.IDtoMapper;
@@ -34,6 +35,30 @@ public class OrderController {
         OrderSummary summary = orderService.createSummary(order);
         OrderSummaryDto summaryDto = dtoMapper.converToDto(summary);
         return new ResponseEntity<>(summaryDto, HttpStatus.OK);
+    }
+
+    /**
+     * Endpoint for retrieving an order
+     * @param orderId of the order
+     * @return orderDto reflecting the order
+     */
+    @GetMapping("/orders/{orderId}/order")
+    public ResponseEntity<OrderDto> getOrder(@PathVariable("orderId") int orderId) {
+        orderService.initializeData();
+        Order order = orderService.getOrder(orderId);
+        OrderDto orderDto = dtoMapper.convertToDto(order);
+        return new ResponseEntity<>(orderDto, HttpStatus.OK);
+    }
+
+    /**
+     * Endpoint for retrieving all orders
+     * @return returns an orderListDto with a list of all orders
+     */
+    @GetMapping("orders")
+    public ResponseEntity<OrderListDto> getOrders(){
+        orderService.initializeData();
+        OrderListDto orderListDto = dtoMapper.converToDto();
+        return new ResponseEntity<>(orderListDto, HttpStatus.OK);
     }
 
 }
